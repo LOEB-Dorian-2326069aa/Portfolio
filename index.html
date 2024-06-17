@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>Mon Portfolio</title>
+  <link rel="icon"  href="img/favicon_valanor.png">
+  <meta type="description" content="Ceci est mon Portfolio">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" type="text/css">
+</head>
+<body>
+<header>
+  <div class="boxed">
+    <div class="flex  aligncenter space-between">
+      <button  onclick="openMenu()" class="header-menu-mobile">
+        <span class="material-icons">menu</span>
+      </button>
+      <a href="/" class="header-logo">
+        <img src="img/logo_valanor.png">
+      </a>
+      <ul class="header-menu">
+        <li><a href="#about">About me</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+
+
+<div class="slider">
+  <img  class="slider-background" src="img/slider.jpg" >
+  <div class="slider-content">
+    <h1>Dorian Loeb</h1>
+    <p>Etudiant informatique</p>
+  </div>
+</div>
+
+<div  id="about" class="section">
+  <div class="boxed">
+    <div class="flex toColumn mCenter">
+      <div  class="w40 wm100">
+        <h2>A propos de moi ?</h2>
+      </div>
+      <div class="w60 wm100">
+        <p>Je suis un étudiant en informatique passionné par le développement web.
+          J'ai commencé à apprendre le développement web il y a 1 an et je suis actuellement en 2ème année de BUT Informatique à l'IUT d'Aix en Provence.
+          J'ai déjà réalisé plusieurs projets personnels et professionnels. Je recherche un stage de 10 semaines pour valider ma 2ème année de BUT.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="skills" class="section dark">
+  <div class="boxed text-center">
+    <h2>Mes compétences</h2>
+    <div class="flex toColumn gap20">
+      <div class="w25 wm100 skill">
+        <img src="img/html.png">
+        <h3>HTML</h3>
+      </div>
+      <div class="w25 wm100 skill">
+        <img src="img/css.png">
+        <h3>CSS</h3>
+      </div>
+      <div class="w25 wm100 skill">
+        <img src="img/c++.png">
+        <h3>C++</h3>
+      </div>
+      <div class="w25 wm100 skill">
+        <img src="img/java.png">
+        <h3>JAVA</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  id="projects" class="section">
+  <div class="boxed text-center">
+    <h2>Mes projets</h2>
+    <div class="flex space-between">
+      <div class="w32  wm100 realisation">
+        <img src="img/chess.jpg">
+        <h3>Chess game</h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div  id="contact" class="section dark">
+  <div class="boxed">
+    <h2>Me contactez</h2>
+    <form id="contact-form">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="nom" required placeholder="Entrer votre nom">
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required placeholder="Entrer votre email">
+      </div>
+      <div class="form-group">
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="4" required placeholder="Entrer votre message"></textarea>
+      </div>
+      <button type="submit">Envoyer</button>
+    </form>
+  </div>
+</div>
+</body>
+
+<script src="js/app.js"></script>
+
+</html>
