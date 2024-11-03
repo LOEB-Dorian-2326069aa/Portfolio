@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio - Dorian Loeb</title>
+  <title>Portfolio</title>
   <link rel="icon" href="img/favicon_valanor.png">
   <meta name="description" content="Portfolio de Dorian Loeb">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
