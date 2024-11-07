@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="d471f342-15bf-4e5c-a679-5d441347fe8d" name="Changes" comment="modification du Portfolio">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;LOEB-Dorian-2326069aa&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/LOEB-Dorian-2326069aa/Portfolio.git&quot;,
+    &quot;accountId&quot;: &quot;cdc94acf-4165-4336-898c-3e8b3b76c980&quot;
+  }
+}</component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
+  <component name="PhpWorkspaceProjectConfiguration" interpreter_name="PHP" />
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;00000067&quot;
+}</component>
+  <component name="ProjectId" id="2i1JtrxAQ55m7N7mMscbR7BgWaG" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JavaScript Debug.index.html.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Dorian/IdeaProjects/Portfolio/img",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.webide.settings.project.settings.php",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Dorian\IdeaProjects\Portfolio\img" />
+    </key>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.19072.14" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.19072.14" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="d471f342-15bf-4e5c-a679-5d441347fe8d" name="Changes" comment="" />
+      <created>1718652368909</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1718652368909</updated>
+      <workItem from="1718652369944" duration="1071000" />
+      <workItem from="1718887444183" duration="4000" />
+      <workItem from="1719153296164" duration="1439000" />
+      <workItem from="1724600240627" duration="1726000" />
+      <workItem from="1724844790911" duration="4000" />
+      <workItem from="1725275042504" duration="55000" />
+      <workItem from="1725275105657" duration="769000" />
+      <workItem from="1725276370924" duration="1975000" />
+      <workItem from="1725284850102" duration="9000" />
+      <workItem from="1730546025426" duration="79000" />
+      <workItem from="1730546195528" duration="3655000" />
+      <workItem from="1730636909776" duration="3682000" />
+    </task>
+    <task id="LOCAL-00001" summary="Correction image">
+      <option name="closed" value="true" />
+      <created>1718652553654</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1718652553654</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Correction logo">
+      <option name="closed" value="true" />
+      <created>1718652827764</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1718652827764</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Correction logo">
+      <option name="closed" value="true" />
+      <created>1718652898481</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1718652898481</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Traduction">
+      <option name="closed" value="true" />
+      <created>1718653357150</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1718653357150</updated>
+    </task>
+    <task id="LOCAL-00005" summary="correction du menu">
+      <option name="closed" value="true" />
+      <created>1719154019359</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719154019359</updated>
+    </task>
+    <task id="LOCAL-00006" summary="correction du menu">
+      <option name="closed" value="true" />
+      <created>1719154184174</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719154184174</updated>
+    </task>
+    <task id="LOCAL-00007" summary="modification du Portfolio">
+      <option name="closed" value="true" />
+      <created>1730639401687</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1730639401687</updated>
+    </task>
+    <task id="LOCAL-00008" summary="modification du Portfolio">
+      <option name="closed" value="true" />
+      <created>1730639588409</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1730639588409</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Correction image" />
+    <MESSAGE value="Correction logo" />
+    <MESSAGE value="Traduction" />
+    <MESSAGE value="correction du menu" />
+    <MESSAGE value="modification du Portfolio" />
+    <option name="LAST_COMMIT_MESSAGE" value="modification du Portfolio" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>
