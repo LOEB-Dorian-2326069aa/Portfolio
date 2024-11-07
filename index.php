@@ -137,7 +137,6 @@
 </div>
 
 
-
 <!-- Formation -->
 <div id="education" class="section dark">
   <div class="boxed text-center">
@@ -205,7 +204,7 @@
     <h2>Contact</h2>
     <div class="contact-info">
       <p>📞 <strong>Téléphone :</strong> 06.33.54.80.08</p>
-      <p>📧 <strong>Email :</strong> <a href="mailto:loeb.dorian97@gmail.com">loeb.dorian97@gmail.com</a></p>
+      <p>📧 <strong>Email :</strong> loeb.dorian97@gmail.com</a></p>
       <p>📍 <strong>Localisation :</strong> Eyguières (13430)</p>
       <p>🚗 <strong>Permis :</strong> B</p>
       <p>🎂 <strong>Âge :</strong> 20 ans</p>
