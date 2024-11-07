@@ -182,7 +182,7 @@
       </div>
       <!-- Candy Crush-like -->
       <div class="w32 wm100 realisation">
-        <img src="img/candy_crush.jpg" alt="Candy Crush-like">
+        <img src="img/candy_crush.png" alt="Candy Crush-like">
         <h3>Candy Crush-like</h3>
         <p>Création d'un jeu similaire à Candy Crush en C++ pour améliorer mes compétences en développement de jeux et en logique de programmation.</p>
       </div>
