@@ -6,12 +6,47 @@ let dragOffset = { x: 0, y: 0 };
 let isMobile = window.innerWidth <= 768;
 let currentMobileTab = null;
 
+// ===== CALCUL DE L'ÂGE =====
+function calculateAge() {
+    const birthDate = new Date(2004, 3, 13); // 13 avril 2004 (mois 0-indexé)
+    const today = new Date();
+    let age = today.getFullYear() - birthDate.getFullYear();
+    const monthDiff = today.getMonth() - birthDate.getMonth();
+    
+    // Si on n'a pas encore passé l'anniversaire cette année
+    if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+    }
+    
+    return age;
+}
+
+function updateAge() {
+    const ageDisplay = document.getElementById('age-display');
+    if (ageDisplay) {
+        const age = calculateAge();
+        ageDisplay.textContent = `${age} ans`;
+    }
+}
+
 // ===== INITIALISATION =====
 document.addEventListener('DOMContentLoaded', function() {
     checkMobile();
     initializeApp();
     updateTime();
+    updateAge(); // Calculer l'âge au chargement
     setInterval(updateTime, 1000);
+    
+    // Mettre à jour l'âge tous les jours (vérifier à minuit)
+    const now = new Date();
+    const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const msUntilTomorrow = tomorrow.getTime() - now.getTime();
+    
+    setTimeout(() => {
+        updateAge();
+        // Puis vérifier tous les jours
+        setInterval(updateAge, 24 * 60 * 60 * 1000);
+    }, msUntilTomorrow);
     
     // Écouter les changements d'orientation
     window.addEventListener('resize', handleResize);
@@ -345,25 +380,44 @@ function startDrag(e) {
     draggedWindow = this.closest('.window');
     const rect = draggedWindow.getBoundingClientRect();
     
+    // Calculer l'offset de manière plus précise
     dragOffset.x = e.clientX - rect.left;
     dragOffset.y = e.clientY - rect.top;
     
+    // S'assurer que la position actuelle est bien définie
+    if (!draggedWindow.style.left) {
+        draggedWindow.style.left = rect.left + 'px';
+    }
+    if (!draggedWindow.style.top) {
+        draggedWindow.style.top = rect.top + 'px';
+    }
+    
     bringToFront(draggedWindow);
     draggedWindow.style.userSelect = 'none';
+    
+    // Empêcher la sélection de texte et autres comportements par défaut
+    e.preventDefault();
 }
 
 function drag(e) {
     if (!draggedWindow || draggedWindow.classList.contains('maximized')) return;
     
+    // Empêcher le comportement par défaut
+    e.preventDefault();
+    
     const x = e.clientX - dragOffset.x;
     const y = e.clientY - dragOffset.y;
     
-    // Limites de l'écran
+    // Limites de l'écran - permettre de monter plus haut (laissant juste 10px sous la navbar)
     const maxX = window.innerWidth - draggedWindow.offsetWidth;
-    const maxY = window.innerHeight - draggedWindow.offsetHeight - 60; // 60px pour la navbar
+    const maxY = window.innerHeight - draggedWindow.offsetHeight - 60; // 60px pour la taskbar en bas
     
-    draggedWindow.style.left = Math.max(0, Math.min(x, maxX)) + 'px';
-    draggedWindow.style.top = Math.max(60, Math.min(y, maxY)) + 'px';
+    // Appliquer les contraintes de manière plus douce
+    const constrainedX = Math.max(0, Math.min(x, maxX));
+    const constrainedY = Math.max(10, Math.min(y, maxY));
+    
+    draggedWindow.style.left = constrainedX + 'px';
+    draggedWindow.style.top = constrainedY + 'px';
 }
 
 function endDrag() {
