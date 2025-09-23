@@ -807,6 +807,7 @@ body::before {
   }
   
   .nav-menu {
+    display: none !important; /* Masquer complètement le menu sur mobile */
     position: fixed;
     top: 50px;
     left: 0;
@@ -856,8 +857,7 @@ body::before {
   .nav-link[data-tab="contact"]::before { content: '\f0e0'; }
   
   .nav-toggle {
-    display: flex;
-    z-index: 1002;
+    display: none; /* Masquer complètement le menu hamburger sur mobile */
   }
   
   .nav-toggle.active span:nth-child(1) {

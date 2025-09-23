@@ -168,13 +168,27 @@ function openWindow(tabName) {
         return;
     }
     
-    // Desktop behavior (code existant)
-    if (activeWindows.has(tabName)) {
-        bringToFront(window);
-        return;
+// Desktop behavior (code existant)
+if (activeWindows.has(tabName)) {
+    const window = document.getElementById(`${tabName}-window`);
+    
+    // Si la fenêtre est minimisée, la restaurer
+    if (window.style.display === 'none') {
+        window.style.display = 'flex';
+        window.style.transform = 'scale(1)';
+        window.style.opacity = '1';
+        window.classList.add('active');
+        
+        // Mettre à jour la taskbar
+        const taskbarApp = document.querySelector(`.taskbar-app[data-tab="${tabName}"]`);
+        if (taskbarApp) {
+            taskbarApp.classList.add('active');
+        }
     }
     
-    const position = windowPositions.get(window.id) || { x: 100, y: 100 };
+    bringToFront(window);
+    return;
+}    const position = windowPositions.get(window.id) || { x: 100, y: 100 };
     window.style.left = position.x + 'px';
     window.style.top = position.y + 'px';
     
@@ -241,6 +255,7 @@ function minimizeWindow(tabName) {
     const window = document.getElementById(`${tabName}-window`);
     if (!window) return;
     
+    // Animation de minimisation vers la taskbar
     window.style.transform = 'scale(0.1) translateY(200px)';
     window.style.opacity = '0';
     
@@ -248,6 +263,12 @@ function minimizeWindow(tabName) {
         window.style.display = 'none';
         window.style.transform = '';
         window.style.opacity = '';
+        
+        // Mettre à jour l'état de la taskbar
+        const taskbarApp = document.querySelector(`.taskbar-app[data-tab="${tabName}"]`);
+        if (taskbarApp) {
+            taskbarApp.classList.remove('active');
+        }
     }, 300);
 }
 
@@ -364,6 +385,16 @@ let highestZIndex = 100;
 
 function bringToFront(window) {
     window.style.zIndex = ++highestZIndex;
+    
+    // Mettre à jour la taskbar - marquer toutes comme inactives puis la courante comme active
+    const allTaskbarApps = document.querySelectorAll('.taskbar-app');
+    allTaskbarApps.forEach(app => app.classList.remove('active'));
+    
+    const tabName = window.getAttribute('data-tab');
+    const taskbarApp = document.querySelector(`.taskbar-app[data-tab="${tabName}"]`);
+    if (taskbarApp) {
+        taskbarApp.classList.add('active');
+    }
 }
 
 // ===== TASKBAR =====
@@ -392,6 +423,9 @@ function addToTaskbar(tabName) {
             window.style.display = 'flex';
             window.style.transform = 'scale(1)';
             window.style.opacity = '1';
+            window.classList.add('active'); // S'assurer que la fenêtre est active
+            bringToFront(window); // Mettre au premier plan
+            this.classList.add('active'); // Marquer l'app taskbar comme active
         } else {
             // Mettre au premier plan ou minimiser si déjà au premier plan
             if (window.style.zIndex == highestZIndex) {
@@ -399,6 +433,7 @@ function addToTaskbar(tabName) {
                 this.classList.remove('active');
             } else {
                 bringToFront(window);
+                this.classList.add('active');
             }
         }
     });
