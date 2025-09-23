@@ -34,6 +34,14 @@ body {
   position: relative;
 }
 
+/* Masquer les icônes bureau sur mobile dès le chargement */
+@media (max-width: 768px) {
+  body .desktop-icons {
+    display: none !important;
+    visibility: hidden !important;
+  }
+}
+
 body::before {
   content: '';
   position: fixed;
@@ -147,6 +155,13 @@ body::before {
   top: 2rem;
   left: 2rem;
   z-index: 10;
+}
+
+/* Masquer les icônes sur mobile par défaut */
+@media (max-width: 768px) {
+  .desktop-icons {
+    display: none !important;
+  }
 }
 
 .desktop-icon {
@@ -696,6 +711,32 @@ body::before {
   z-index: 1000;
 }
 
+/* ===== ONGLETS MOBILES ===== */
+.mobile-tabs {
+  display: none; /* Cachés par défaut sur desktop */
+}
+
+.mobile-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 60px;
+}
+
+.mobile-tab.active {
+  color: var(--accent-color);
+}
+
+.mobile-tab i {
+  font-size: 1.2rem;
+}
+
 .start-button {
   width: 40px;
   height: 40px;
@@ -751,68 +792,409 @@ body::before {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+  /* NAVBAR MOBILE */
   .navbar {
     padding: 0 1rem;
+    height: 50px;
+  }
+  
+  .nav-brand {
+    font-size: 1rem;
+  }
+  
+  .nav-brand i {
+    font-size: 1.25rem;
   }
   
   .nav-menu {
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 50px;
     left: 0;
     right: 0;
-    background: var(--glass);
+    bottom: 0;
+    background: var(--bg-primary);
     backdrop-filter: blur(20px);
     flex-direction: column;
-    padding: 1rem;
-    transform: translateY(-100%);
+    padding: 2rem 1rem;
+    transform: translateX(-100%);
     opacity: 0;
     visibility: hidden;
     transition: all 0.3s ease;
+    z-index: 1001;
+    justify-content: flex-start;
+    gap: 1rem;
   }
   
   .nav-menu.active {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
     visibility: visible;
   }
   
+  .nav-link {
+    padding: 1rem 1.5rem;
+    font-size: 1.1rem;
+    border-radius: 1rem;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+  
+  .nav-link::before {
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    width: 24px;
+  }
+  
+  .nav-link[data-tab="about"]::before { content: '\f007'; }
+  .nav-link[data-tab="experience"]::before { content: '\f0b1'; }
+  .nav-link[data-tab="skills"]::before { content: '\f6e3'; }
+  .nav-link[data-tab="formation"]::before { content: '\f19d'; }
+  .nav-link[data-tab="projects"]::before { content: '\f07b'; }
+  .nav-link[data-tab="contact"]::before { content: '\f0e0'; }
+  
   .nav-toggle {
     display: flex;
+    z-index: 1002;
   }
   
+  .nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  
+  .nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
+  }
+  
+  /* DESKTOP MOBILE */
   .desktop {
-    padding: 1rem;
+    top: 50px;
+    bottom: 100px;
+    padding: 0;
   }
   
+  /* ONGLETS MOBILES */
+  .mobile-tabs {
+    position: fixed;
+    bottom: 50px;
+    left: 0;
+    right: 0;
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid var(--glass-border);
+    display: flex; /* Affichés seulement sur mobile */
+    justify-content: space-around;
+    padding: 0.5rem 0;
+    z-index: 999;
+  }
+  
+  .mobile-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 60px;
+    min-height: 44px; /* Zone tactile recommandée */
+    justify-content: center;
+  }
+  
+  .mobile-tab.active {
+    color: var(--accent-color);
+  }
+  
+  .mobile-tab i {
+    font-size: 1.2rem;
+  }
+  
+  /* ICÔNES BUREAU MOBILE */
   .desktop-icons {
-    grid-template-columns: repeat(3, 80px);
-    gap: 1rem;
+    display: none;
   }
   
+  /* FENÊTRES MOBILE */
   .window {
-    min-width: 90vw;
-    max-width: 95vw;
+    position: fixed !important;
+    top: 50px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 100px !important;
+    width: 100% !important;
+    height: auto !important;
+    min-width: unset !important;
+    max-width: unset !important;
+    min-height: unset !important;
+    max-height: unset !important;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
+    background: var(--bg-primary);
   }
   
-  .contact-grid {
-    grid-template-columns: 1fr;
+  .window-header {
+    padding: 1rem;
+    background: var(--bg-secondary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
   
-  .projects-grid {
-    grid-template-columns: 1fr;
+  .window-title {
+    font-size: 1.1rem;
+  }
+  
+  .window-controls {
+    display: none;
+  }
+  
+  .window-content {
+    padding: 1rem;
+    height: calc(100vh - 200px);
+    overflow-y: auto;
+    background: var(--bg-primary);
+    -webkit-overflow-scrolling: touch; /* Scroll fluide iOS */
+  }
+  
+  /* CONTENU MOBILE */
+  .profile-section h2 {
+    font-size: 1.5rem;
   }
   
   .quick-stats {
-    gap: 1rem;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .stat {
+    justify-content: center;
+    padding: 0.75rem;
+    background: var(--glass);
+    border-radius: 0.5rem;
+    width: 100%;
+    max-width: 280px;
+  }
+  
+  .timeline {
+    padding-left: 1rem;
+  }
+  
+  .timeline::before {
+    left: 0.5rem;
+  }
+  
+  .timeline-item {
+    padding-left: 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .timeline-dot {
+    left: -1.5rem;
+  }
+  
+  .skills-grid {
+    gap: 1.5rem;
+  }
+  
+  .skill-tags {
+    gap: 0.25rem;
+  }
+  
+  .skill-tag {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .language-item {
+    grid-template-columns: 80px 1fr 80px;
+    gap: 0.5rem;
+    font-size: 0.875rem;
   }
   
   .education-item {
     flex-direction: column;
     text-align: center;
+    padding: 1.25rem;
+  }
+  
+  .education-icon {
+    width: 50px;
+    height: 50px;
+    margin: 0 auto 1rem auto;
+  }
+  
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .project-image {
+    height: 180px;
+  }
+  
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .contact-item {
+    flex-direction: row;
+    gap: 0.75rem;
+    padding: 0.75rem;
+    background: var(--glass);
+    border-radius: 0.5rem;
+  }
+  
+  .form-group input,
+  .form-group textarea {
+    font-size: 16px; /* Évite le zoom sur iOS */
+    padding: 1rem;
+  }
+  
+  .submit-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+  }
+  
+  /* TASKBAR MOBILE */
+  .taskbar {
+    height: 50px;
+    padding: 0 1rem;
+  }
+  
+  .taskbar-apps {
+    display: none;
+  }
+  
+  .start-button {
+    width: 35px;
+    height: 35px;
+  }
+  
+  .time {
+    font-size: 0.85rem;
+  }
+}
+
+/* TRÈS PETITS ÉCRANS */
+@media (max-width: 480px) {
+  .navbar {
+    height: 45px;
+  }
+  
+  .nav-brand {
+    font-size: 0.9rem;
+  }
+  
+  .desktop {
+    top: 45px;
+    bottom: 95px;
+  }
+  
+  .window {
+    top: 45px !important;
+    bottom: 95px !important;
+  }
+  
+  .window-content {
+    height: calc(100vh - 190px);
+    padding: 0.75rem;
   }
   
   .taskbar {
-    padding: 0 0.5rem;
+    height: 45px;
+  }
+  
+  .mobile-tabs {
+    bottom: 45px;
+    padding: 0.25rem 0;
+  }
+  
+  .mobile-tab {
+    font-size: 0.65rem;
+    min-width: 50px;
+    padding: 0.25rem;
+  }
+  
+  .mobile-tab i {
+    font-size: 1rem;
+  }
+  
+  .window-header {
+    padding: 0.75rem 1rem;
+  }
+  
+  .stat {
+    padding: 0.5rem;
+  }
+  
+  .contact-item {
+    padding: 0.5rem;
+  }
+}
+
+/* OPTIMISATIONS TACTILES */
+@media (hover: none) and (pointer: coarse) {
+  /* Zones tactiles recommandées (minimum 44px) */
+  .nav-link,
+  .mobile-tab,
+  .control,
+  .desktop-icon,
+  .submit-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  .control {
+    width: 20px;
+    height: 20px;
+  }
+  
+  /* Supprime les effets hover sur tactile */
+  .nav-link:hover,
+  .desktop-icon:hover,
+  .project-card:hover,
+  .mobile-tab:hover {
+    transform: none;
+  }
+  
+  /* Focus amélioré pour l'accessibilité */
+  .nav-link:focus,
+  .mobile-tab:focus,
+  .submit-btn:focus {
+    outline: 2px solid var(--accent-color);
+    outline-offset: 2px;
+  }
+}
+
+/* ANIMATION DE SWIPE */
+.window.swipe-transition {
+  transition: transform 0.3s ease;
+}
+
+/* INDICATEUR DE SWIPE */
+@media (max-width: 768px) {
+  .window-content::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: var(--text-muted);
+    border-radius: 2px;
+    opacity: 0.3;
   }
 }
 

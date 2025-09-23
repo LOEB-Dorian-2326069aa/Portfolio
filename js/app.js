@@ -3,28 +3,58 @@ let activeWindows = new Set();
 let windowPositions = new Map();
 let draggedWindow = null;
 let dragOffset = { x: 0, y: 0 };
+let isMobile = window.innerWidth <= 768;
+let currentMobileTab = null;
 
 // ===== INITIALISATION =====
 document.addEventListener('DOMContentLoaded', function() {
+    checkMobile();
     initializeApp();
     updateTime();
     setInterval(updateTime, 1000);
+    
+    // Écouter les changements d'orientation
+    window.addEventListener('resize', handleResize);
+    window.addEventListener('orientationchange', handleResize);
 });
+
+function checkMobile() {
+    isMobile = window.innerWidth <= 768;
+    document.body.classList.toggle('mobile-mode', isMobile);
+}
+
+function handleResize() {
+    checkMobile();
+    
+    if (isMobile && currentMobileTab) {
+        // Réajuster la fenêtre active sur mobile
+        const activeWindow = document.getElementById(`${currentMobileTab}-window`);
+        if (activeWindow) {
+            activeWindow.classList.add('active');
+        }
+    }
+}
 
 function initializeApp() {
     setupNavigation();
     setupDesktopIcons();
     setupWindowControls();
-    setupDragAndDrop();
+    setupMobileNavigation();
     setupMobileNav();
     
-    // Positions initiales des fenêtres
-    const windows = document.querySelectorAll('.window');
-    windows.forEach((window, index) => {
-        const x = 100 + (index % 3) * 50;
-        const y = 100 + Math.floor(index / 3) * 50;
-        windowPositions.set(window.id, { x, y });
-    });
+    if (!isMobile) {
+        setupDragAndDrop();
+        // Positions initiales des fenêtres pour desktop
+        const windows = document.querySelectorAll('.window');
+        windows.forEach((window, index) => {
+            const x = 100 + (index % 3) * 50;
+            const y = 100 + Math.floor(index / 3) * 50;
+            windowPositions.set(window.id, { x, y });
+        });
+    } else {
+        // Sur mobile, ouvrir la première section par défaut
+        openWindow('about');
+    }
 }
 
 // ===== NAVIGATION =====
@@ -36,6 +66,14 @@ function setupNavigation() {
             const tabName = this.getAttribute('data-tab');
             openWindow(tabName);
             
+            // Fermer le menu mobile si ouvert
+            if (isMobile) {
+                const navMenu = document.querySelector('.nav-menu');
+                const navToggle = document.querySelector('.nav-toggle');
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
+            
             // Mise à jour des liens actifs
             navLinks.forEach(nl => nl.classList.remove('active'));
             this.classList.add('active');
@@ -43,16 +81,57 @@ function setupNavigation() {
     });
 }
 
+// ===== NAVIGATION MOBILE =====
+function setupMobileNavigation() {
+    const mobileTabs = document.querySelectorAll('.mobile-tab');
+    
+    mobileTabs.forEach(tab => {
+        tab.addEventListener('click', function() {
+            const tabName = this.getAttribute('data-tab');
+            
+            // Fermer toutes les fenêtres et ouvrir la nouvelle
+            if (isMobile) {
+                closeAllWindows();
+                setTimeout(() => {
+                    openWindow(tabName);
+                    updateMobileTabActive(tabName);
+                }, 100);
+            }
+        });
+    });
+}
+
+function updateMobileTabActive(tabName) {
+    const mobileTabs = document.querySelectorAll('.mobile-tab');
+    mobileTabs.forEach(tab => tab.classList.remove('active'));
+    
+    const activeTab = document.querySelector(`.mobile-tab[data-tab="${tabName}"]`);
+    if (activeTab) {
+        activeTab.classList.add('active');
+        currentMobileTab = tabName;
+    }
+}
+
+function closeAllWindows() {
+    const windows = document.querySelectorAll('.window');
+    windows.forEach(window => {
+        window.classList.remove('active');
+    });
+    activeWindows.clear();
+}
+
 // ===== ICÔNES BUREAU =====
 function setupDesktopIcons() {
     const desktopIcons = document.querySelectorAll('.desktop-icon');
     
     desktopIcons.forEach(icon => {
-        // Double-clic pour ouvrir
-        icon.addEventListener('dblclick', function() {
-            const tabName = this.getAttribute('data-tab');
-            openWindow(tabName);
-        });
+        // Double-clic pour ouvrir (desktop seulement)
+        if (!isMobile) {
+            icon.addEventListener('dblclick', function() {
+                const tabName = this.getAttribute('data-tab');
+                openWindow(tabName);
+            });
+        }
         
         // Effet de sélection
         icon.addEventListener('click', function() {
@@ -67,32 +146,49 @@ function openWindow(tabName) {
     const window = document.getElementById(`${tabName}-window`);
     if (!window) return;
     
-    // Si la fenêtre est déjà ouverte, la mettre au premier plan
+    if (isMobile) {
+        // Sur mobile, fermer toutes les autres fenêtres
+        closeAllWindows();
+        
+        // Afficher la fenêtre en plein écran
+        window.classList.add('active');
+        activeWindows.add(tabName);
+        updateMobileTabActive(tabName);
+        
+        // Animation spéciale mobile
+        window.style.transform = 'translateX(100%)';
+        window.style.opacity = '0';
+        
+        requestAnimationFrame(() => {
+            window.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
+            window.style.transform = 'translateX(0)';
+            window.style.opacity = '1';
+        });
+        
+        return;
+    }
+    
+    // Desktop behavior (code existant)
     if (activeWindows.has(tabName)) {
         bringToFront(window);
         return;
     }
     
-    // Position de la fenêtre
     const position = windowPositions.get(window.id) || { x: 100, y: 100 };
     window.style.left = position.x + 'px';
     window.style.top = position.y + 'px';
     
-    // Afficher la fenêtre
     window.classList.add('active');
     activeWindows.add(tabName);
     
-    // Mettre au premier plan
     bringToFront(window);
-    
-    // Ajouter à la taskbar
     addToTaskbar(tabName);
     
-    // Animation d'ouverture
     window.style.transform = 'scale(0.8)';
     window.style.opacity = '0';
     
     requestAnimationFrame(() => {
+        window.style.transition = 'transform 0.3s ease, opacity 0.3s ease';
         window.style.transform = 'scale(1)';
         window.style.opacity = '1';
     });
@@ -102,7 +198,30 @@ function closeWindow(tabName) {
     const window = document.getElementById(`${tabName}-window`);
     if (!window) return;
     
-    // Animation de fermeture
+    if (isMobile) {
+        // Animation de fermeture mobile
+        window.style.transform = 'translateX(-100%)';
+        window.style.opacity = '0';
+        
+        setTimeout(() => {
+            window.classList.remove('active');
+            activeWindows.delete(tabName);
+            
+            // Réinitialiser les styles
+            window.style.transform = '';
+            window.style.opacity = '';
+            window.style.transition = '';
+            
+            // Ouvrir la section "À propos" par défaut
+            if (activeWindows.size === 0) {
+                setTimeout(() => openWindow('about'), 100);
+            }
+        }, 300);
+        
+        return;
+    }
+    
+    // Desktop behavior (code existant)
     window.style.transform = 'scale(0.8)';
     window.style.opacity = '0';
     
@@ -111,17 +230,17 @@ function closeWindow(tabName) {
         activeWindows.delete(tabName);
         removeFromTaskbar(tabName);
         
-        // Reset des styles
         window.style.transform = '';
         window.style.opacity = '';
     }, 200);
 }
 
 function minimizeWindow(tabName) {
+    if (isMobile) return; // Pas de minimisation sur mobile
+    
     const window = document.getElementById(`${tabName}-window`);
     if (!window) return;
     
-    // Animation de minimisation vers la taskbar
     window.style.transform = 'scale(0.1) translateY(200px)';
     window.style.opacity = '0';
     
@@ -133,11 +252,12 @@ function minimizeWindow(tabName) {
 }
 
 function maximizeWindow(tabName) {
+    if (isMobile) return; // Déjà en plein écran sur mobile
+    
     const window = document.getElementById(`${tabName}-window`);
     if (!window) return;
     
     if (window.classList.contains('maximized')) {
-        // Restaurer
         window.classList.remove('maximized');
         const position = windowPositions.get(window.id);
         window.style.left = position.x + 'px';
@@ -145,7 +265,6 @@ function maximizeWindow(tabName) {
         window.style.width = '';
         window.style.height = '';
     } else {
-        // Maximiser
         windowPositions.set(window.id, {
             x: parseInt(window.style.left),
             y: parseInt(window.style.top)
@@ -303,6 +422,7 @@ function setupMobileNav() {
     if (navToggle) {
         navToggle.addEventListener('click', function() {
             navMenu.classList.toggle('active');
+            this.classList.toggle('active');
         });
     }
     
@@ -310,10 +430,21 @@ function setupMobileNav() {
     const navLinks = document.querySelectorAll('.nav-link');
     navLinks.forEach(link => {
         link.addEventListener('click', function() {
-            if (window.innerWidth <= 768) {
+            if (isMobile) {
                 navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
             }
         });
+    });
+    
+    // Fermer le menu si on clique à l'extérieur
+    document.addEventListener('click', function(e) {
+        if (isMobile && navMenu.classList.contains('active')) {
+            if (!navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            }
+        }
     });
 }
 
@@ -328,23 +459,103 @@ function updateTime() {
     timeElement.textContent = timeString;
 }
 
+// ===== GESTION SWIPE MOBILE =====
+let touchStartX = 0;
+let touchStartY = 0;
+let touchEndX = 0;
+let touchEndY = 0;
+
+function setupSwipeNavigation() {
+    if (!isMobile) return;
+    
+    const windowContainer = document.querySelector('.window-container');
+    
+    windowContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+    windowContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+}
+
+function handleTouchStart(e) {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+}
+
+function handleTouchEnd(e) {
+    touchEndX = e.changedTouches[0].screenX;
+    touchEndY = e.changedTouches[0].screenY;
+    handleSwipe();
+}
+
+function handleSwipe() {
+    const deltaX = touchEndX - touchStartX;
+    const deltaY = touchEndY - touchStartY;
+    const minSwipeDistance = 50;
+    
+    // Vérifier que c'est un swipe horizontal et non vertical
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+        const tabs = ['about', 'experience', 'skills', 'formation', 'projects', 'contact'];
+        const currentIndex = tabs.indexOf(currentMobileTab);
+        
+        if (deltaX > 0 && currentIndex > 0) {
+            // Swipe droite - section précédente
+            openWindow(tabs[currentIndex - 1]);
+            updateMobileTabActive(tabs[currentIndex - 1]);
+        } else if (deltaX < 0 && currentIndex < tabs.length - 1) {
+            // Swipe gauche - section suivante
+            openWindow(tabs[currentIndex + 1]);
+            updateMobileTabActive(tabs[currentIndex + 1]);
+        }
+    }
+}
+
 // ===== BOUTON START =====
 document.addEventListener('DOMContentLoaded', function() {
     const startButton = document.querySelector('.start-button');
     
     startButton.addEventListener('click', function() {
-        // Afficher toutes les fenêtres ou menu start
-        const desktopIcons = document.querySelectorAll('.desktop-icon');
-        desktopIcons.forEach((icon, index) => {
-            setTimeout(() => {
-                icon.style.animation = 'bounce 0.6s ease';
+        if (isMobile) {
+            // Sur mobile, ouvrir le menu de la navbar
+            const navMenu = document.querySelector('.nav-menu');
+            const navToggle = document.querySelector('.nav-toggle');
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        } else {
+            // Animation des icônes desktop
+            const desktopIcons = document.querySelectorAll('.desktop-icon');
+            desktopIcons.forEach((icon, index) => {
                 setTimeout(() => {
-                    icon.style.animation = '';
-                }, 600);
-            }, index * 100);
-        });
+                    icon.style.animation = 'bounce 0.6s ease';
+                    setTimeout(() => {
+                        icon.style.animation = '';
+                    }, 600);
+                }, index * 100);
+            });
+        }
     });
 });
+
+// Ajouter le swipe navigation à l'initialisation
+function initializeApp() {
+    setupNavigation();
+    setupDesktopIcons();
+    setupWindowControls();
+    setupMobileNavigation();
+    setupMobileNav();
+    setupSwipeNavigation();
+    
+    if (!isMobile) {
+        setupDragAndDrop();
+        // Positions initiales des fenêtres pour desktop
+        const windows = document.querySelectorAll('.window');
+        windows.forEach((window, index) => {
+            const x = 100 + (index % 3) * 50;
+            const y = 100 + Math.floor(index / 3) * 50;
+            windowPositions.set(window.id, { x, y });
+        });
+    } else {
+        // Sur mobile, ouvrir la première section par défaut
+        openWindow('about');
+    }
+}
 
 // ===== GESTION FORMULAIRE CONTACT =====
 document.addEventListener('DOMContentLoaded', function() {
