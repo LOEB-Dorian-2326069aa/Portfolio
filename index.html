@@ -3,216 +3,436 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio</title>
+  <title>Portfolio Dorian Loeb</title>
   <link rel="icon" href="img/favicon_valanor.png">
-  <meta name="description" content="Portfolio de Dorian Loeb">
+  <meta name="description" content="Portfolio de Dorian Loeb - Développeur Web">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" type="text/css">
 </head>
 <body>
-<!-- Header -->
-<header>
-  <div class="boxed">
-    <div class="flex aligncenter space-between">
-      <button onclick="openMenu()" class="header-menu-mobile">
-        <span class="material-icons">menu</span>
-      </button>
-      <a class="header-logo" href="#">
-        <img src="img/logo_valanor.png" alt="Logo Dorian Loeb">
-      </a>
-      <ul class="header-menu">
-        <li><a href="#about">À propos</a></li>
-        <li><a href="#experience">Expériences</a></li>
-        <li><a href="#skills">Compétences</a></li>
-        <li><a href="#projects">Projets</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <i class="fas fa-code"></i>
+      <span>Dorian Loeb</span>
     </div>
-  </div>
-</header>
-
-<!-- Overlay pour le menu mobile -->
-<div id="overlay" onclick="openMenu()"></div>
-
-<!-- Slider -->
-<div class="slider">
-  <img class="slider-background" src="img/slider.jpg" alt="Image de fond">
-  <div class="slider-content">
-    <h1>Dorian Loeb</h1>
-    <p>Étudiant en informatique</p>
-  </div>
-</div>
-
-<!-- À propos de moi -->
-<div id="about" class="section">
-  <div class="boxed">
-    <div class="flex toColumn mCenter">
-      <div class="w40 wm100">
-        <h2>À propos de moi</h2>
-      </div>
-      <div class="w60 wm100">
-        <p>Je m'appelle Dorian Loeb, étudiant en 2ème année de BUT Informatique à l'IUT d'Aix-en-Provence. Passionné par le développement web, j'ai acquis des compétences solides en programmation et en gestion de projet. Mon objectif est de trouver un stage de 10 semaines pour valider ma deuxième année de BUT et appliquer mes connaissances dans un environnement professionnel.</p>
-      </div>
+    <ul class="nav-menu">
+      <li><button class="nav-link" data-tab="about">À propos</button></li>
+      <li><button class="nav-link" data-tab="experience">Expérience</button></li>
+      <li><button class="nav-link" data-tab="skills">Compétences</button></li>
+      <li><button class="nav-link" data-tab="formation">Formation</button></li>
+      <li><button class="nav-link" data-tab="projects">Projets</button></li>
+      <li><button class="nav-link" data-tab="contact">Contact</button></li>
+    </ul>
+    <div class="nav-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </div>
-</div>
+  </nav>
 
-<!-- Expériences professionnelles -->
-<div id="experience" class="section dark">
-  <div class="boxed text-center">
-    <h2>Expériences professionnelles</h2>
-    <div class="experience-container">
-      <!-- Agent de Services Intérieurs -->
-      <div class="experience">
-        <h3>Agent de Services Intérieurs</h3>
-        <p>Juillet - Août 2024</p>
-        <p class="location">Hôpital du Pays Salonais - Salon de Provence</p>
-        <p>Distribution de matériel dans les services de soins</p>
-        <p>Réception et vérification des commandes</p>
+  <!-- BUREAU -->
+  <main class="desktop">
+    <div class="desktop-background"></div>
+    
+    <!-- ICÔNES DU BUREAU -->
+    <div class="desktop-icons">
+      <div class="desktop-icon" data-tab="about">
+        <i class="fas fa-user"></i>
+        <span>À propos</span>
       </div>
-      <!-- Préparateur de commande -->
-      <div class="experience">
-        <h3>Préparateur de commande</h3>
-        <p>Juillet - Août 2023</p>
-        <p class="location">Pro à Pro Distribution Sud - Miramas</p>
-        <p>Utilisation du transpalette électrique pour préparer les colis à l'envoi</p>
+      <div class="desktop-icon" data-tab="experience">
+        <i class="fas fa-briefcase"></i>
+        <span>Expérience</span>
       </div>
-      <!-- Conseiller clientèle -->
-      <div class="experience">
-        <h3>Conseiller clientèle</h3>
-        <p>Juillet - Août 2022</p>
-        <p>WELDOM - Salon-de-Provence</p>
-        <p>Intégration de l'équipe du rayon luminaire</p>
-        <p>Prodiguer des conseils techniques sur les produits</p>
-        <p>Mise en rayon</p>
+      <div class="desktop-icon" data-tab="skills">
+        <i class="fas fa-tools"></i>
+        <span>Compétences</span>
       </div>
-      <!-- Stage d'observation - Service informatique -->
-      <div class="experience">
-        <h3>Stage d'observation - Service informatique</h3>
-        <p>Décembre 2019</p>
-        <p class="location">Hôpital du Pays Salonais - Salon-de-Provence</p>
-        <p>Intégration de l'équipe de maintenance informatique</p>
-        <p>Aide à l'installation du matériel informatique dans l'hôpital</p>
+      <div class="desktop-icon" data-tab="formation">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Formation</span>
+      </div>
+      <div class="desktop-icon" data-tab="projects">
+        <i class="fas fa-folder-open"></i>
+        <span>Projets</span>
+      </div>
+      <div class="desktop-icon" data-tab="contact">
+        <i class="fas fa-envelope"></i>
+        <span>Contact</span>
       </div>
     </div>
-  </div>
-</div>
 
-
-
-<!-- Compétences -->
-<div id="skills" class="section">
-  <div class="boxed text-center">
-    <h2>Compétences</h2>
-    <div class="flex toColumn gap20">
-      <!-- Langues -->
-      <div class="w100 skill-category">
-        <h3>Langues</h3>
-        <div class="competence">Anglais : Courant (B1)</div>
-      </div>
-      <!-- Logiciels -->
-      <div class="w100 skill-category">
-        <h3>Logiciels</h3>
-        <div class="competences">
-          <div class="competence">Visual Studio</div>
-          <div class="competence">IntelliJ IDEA</div>
-          <div class="competence">Microsoft Office</div>
-          <div class="competence">Oracle SQL</div>
+    <!-- FENÊTRES / ONGLETS -->
+    <div class="window-container">
+      <!-- ONGLET À PROPOS -->
+      <div class="window" id="about-window" data-tab="about">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control close" data-action="close"></span>
+            <span class="control minimize" data-action="minimize"></span>
+            <span class="control maximize" data-action="maximize"></span>
+          </div>
+          <div class="window-title">
+            <i class="fas fa-user"></i>
+            <span>À propos de moi</span>
+          </div>
+        </div>
+        <div class="window-content">
+          <div class="profile-section">
+            <div class="profile-avatar">
+              <i class="fas fa-user-circle"></i>
+            </div>
+            <h2>Dorian Loeb</h2>
+            <p class="subtitle">Étudiant en BUT Informatique</p>
+            <p class="description">
+              Passionné par le développement web, je suis étudiant en 2ème année de BUT Informatique à l'IUT d'Aix-en-Provence. 
+              J'ai acquis des compétences solides en programmation et en gestion de projet. 
+              Mon objectif est de trouver un stage de 10 semaines pour valider ma deuxième année de BUT.
+            </p>
+            <div class="quick-stats">
+              <div class="stat">
+                <i class="fas fa-map-marker-alt"></i>
+                <span>Eyguières (13430)</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-birthday-cake"></i>
+                <span>20 ans</span>
+              </div>
+              <div class="stat">
+                <i class="fas fa-car"></i>
+                <span>Permis B</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <!-- Langages informatiques -->
-      <div class="w100 skill-category">
-        <h3>Langages informatiques</h3>
-        <div class="competences">
-          <div class="competence">PHP</div>
-          <div class="competence">HTML/CSS</div>
-          <div class="competence">SQL</div>
-          <div class="competence">JAVA</div>
-          <div class="competence">C++</div>
+
+      <!-- ONGLET EXPÉRIENCE -->
+      <div class="window" id="experience-window" data-tab="experience">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control close" data-action="close"></span>
+            <span class="control minimize" data-action="minimize"></span>
+            <span class="control maximize" data-action="maximize"></span>
+          </div>
+          <div class="window-title">
+            <i class="fas fa-briefcase"></i>
+            <span>Expériences professionnelles</span>
+          </div>
+        </div>
+        <div class="window-content">
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Agent de Services Intérieurs</h3>
+                <p class="timeline-date">Juillet - Août 2024</p>
+                <p class="timeline-company">Hôpital du Pays Salonais</p>
+                <p>Distribution de matériel dans les services de soins</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Préparateur de commande</h3>
+                <p class="timeline-date">Juillet - Août 2023</p>
+                <p class="timeline-company">Pro à Pro Distribution Sud</p>
+                <p>Préparation des colis avec transpalette électrique</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Conseiller clientèle</h3>
+                <p class="timeline-date">Juillet - Août 2022</p>
+                <p class="timeline-company">WELDOM</p>
+                <p>Conseil technique et mise en rayon</p>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-dot"></div>
+              <div class="timeline-content">
+                <h3>Stage d'observation</h3>
+                <p class="timeline-date">Décembre 2019</p>
+                <p class="timeline-company">Hôpital du Pays Salonais</p>
+                <p>Aide à l'installation du matériel informatique</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONGLET COMPÉTENCES -->
+      <div class="window" id="skills-window" data-tab="skills">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control close" data-action="close"></span>
+            <span class="control minimize" data-action="minimize"></span>
+            <span class="control maximize" data-action="maximize"></span>
+          </div>
+          <div class="window-title">
+            <i class="fas fa-tools"></i>
+            <span>Compétences techniques</span>
+          </div>
+        </div>
+        <div class="window-content">
+          <div class="skills-grid">
+            <div class="skill-category">
+              <h3><i class="fas fa-code"></i> Langages de programmation</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Java</span>
+                <span class="skill-tag">C++</span>
+                <span class="skill-tag">PHP</span>
+                <span class="skill-tag">HTML/CSS</span>
+                <span class="skill-tag">SQL</span>
+                <span class="skill-tag">JavaScript</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3><i class="fas fa-laptop-code"></i> Logiciels & Outils</h3>
+              <div class="skill-tags">
+                <span class="skill-tag">Visual Studio</span>
+                <span class="skill-tag">IntelliJ IDEA</span>
+                <span class="skill-tag">Microsoft Office</span>
+                <span class="skill-tag">Oracle SQL</span>
+                <span class="skill-tag">Git</span>
+              </div>
+            </div>
+            <div class="skill-category">
+              <h3><i class="fas fa-globe"></i> Langues</h3>
+              <div class="language-skills">
+                <div class="language-item">
+                  <span>Français</span>
+                  <div class="language-level">
+                    <div class="level-bar" style="width: 100%"></div>
+                  </div>
+                  <span>Natif</span>
+                </div>
+                <div class="language-item">
+                  <span>Anglais</span>
+                  <div class="language-level">
+                    <div class="level-bar" style="width: 70%"></div>
+                  </div>
+                  <span>B1 - Courant</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONGLET FORMATION -->
+      <div class="window" id="formation-window" data-tab="formation">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control close" data-action="close"></span>
+            <span class="control minimize" data-action="minimize"></span>
+            <span class="control maximize" data-action="maximize"></span>
+          </div>
+          <div class="window-title">
+            <i class="fas fa-graduation-cap"></i>
+            <span>Formation académique</span>
+          </div>
+        </div>
+        <div class="window-content">
+          <div class="education-timeline">
+            <div class="education-item">
+              <div class="education-icon">
+                <i class="fas fa-university"></i>
+              </div>
+              <div class="education-content">
+                <h3>BUT Informatique</h3>
+                <p class="education-period">Septembre 2023 - Juin 2026</p>
+                <p class="education-institution">IUT Aix-Marseille</p>
+                <div class="projects-highlight">
+                  <h4>Projets réalisés :</h4>
+                  <ul>
+                    <li><i class="fas fa-chess"></i> Jeu d'échecs en Java</li>
+                    <li><i class="fas fa-gamepad"></i> Candy Crush-like en C++</li>
+                    <li><i class="fas fa-database"></i> Base de données Access</li>
+                    <li><i class="fas fa-globe"></i> Site web MySQL/PHP</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="education-item">
+              <div class="education-icon">
+                <i class="fas fa-school"></i>
+              </div>
+              <div class="education-content">
+                <h3>Baccalauréat STI2D</h3>
+                <p class="education-period">Juin 2023</p>
+                <p class="education-institution">Lycée Adam de Craponne</p>
+                <div class="projects-highlight">
+                  <h4>Projets réalisés :</h4>
+                  <ul>
+                    <li><i class="fas fa-microchip"></i> Store banne sur Arduino</li>
+                    <li><i class="fas fa-robot"></i> Robot-sumo & capteur CO2</li>
+                    <li><i class="fas fa-code"></i> Programmation HTML/CSS</li>
+                    <li><i class="fas fa-certificate"></i> Certification PIX</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONGLET PROJETS -->
+      <div class="window" id="projects-window" data-tab="projects">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control close" data-action="close"></span>
+            <span class="control minimize" data-action="minimize"></span>
+            <span class="control maximize" data-action="maximize"></span>
+          </div>
+          <div class="window-title">
+            <i class="fas fa-folder-open"></i>
+            <span>Mes projets</span>
+          </div>
+        </div>
+        <div class="window-content">
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-image">
+                <img src="img/chess.jpg" alt="Chess Game">
+              </div>
+              <div class="project-info">
+                <h3>Chess Game</h3>
+                <p>Développement d'un jeu d'échecs en Java pour approfondir mes compétences en algorithmique et POO.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">Java</span>
+                  <span class="tech-tag">POO</span>
+                  <span class="tech-tag">Algorithmes</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image">
+                <img src="img/candy_crush.png" alt="Candy Crush-like">
+              </div>
+              <div class="project-info">
+                <h3>Candy Crush-like</h3>
+                <p>Création d'un jeu similaire à Candy Crush en C++ pour améliorer mes compétences en logique et développement de jeux.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">C++</span>
+                  <span class="tech-tag">Game Dev</span>
+                  <span class="tech-tag">Logique</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-card">
+              <div class="project-image">
+                <img src="img/site_tenrac.JPG" alt="Site WEB MySQL/PHP">
+              </div>
+              <div class="project-info">
+                <h3>Site WEB avec MySQL/PHP</h3>
+                <p>Développement d'un site web dynamique avec base de données et fonctionnalités interactives.</p>
+                <div class="project-tech">
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">MySQL</span>
+                  <span class="tech-tag">HTML/CSS</span>
+                </div>
+                <a href="https://tenracc.alwaysdata.net/" class="project-link" target="_blank">
+                  <i class="fas fa-external-link-alt"></i> Voir le site
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ONGLET CONTACT -->
+      <div class="window" id="contact-window" data-tab="contact">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control close" data-action="close"></span>
+            <span class="control minimize" data-action="minimize"></span>
+            <span class="control maximize" data-action="maximize"></span>
+          </div>
+          <div class="window-title">
+            <i class="fas fa-envelope"></i>
+            <span>Me contacter</span>
+          </div>
+        </div>
+        <div class="window-content">
+          <div class="contact-grid">
+            <div class="contact-info">
+              <h3>Informations de contact</h3>
+              <div class="contact-item">
+                <i class="fas fa-phone"></i>
+                <div>
+                  <strong>Téléphone</strong>
+                  <p>06.33.54.80.08</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                  <strong>Email</strong>
+                  <p>loeb.dorian97@gmail.com</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                  <strong>Localisation</strong>
+                  <p>Eyguières (13430)</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <i class="fas fa-car"></i>
+                <div>
+                  <strong>Permis</strong>
+                  <p>Permis B</p>
+                </div>
+              </div>
+            </div>
+            <div class="contact-form">
+              <h3>Envoyez-moi un message</h3>
+              <form>
+                <div class="form-group">
+                  <label for="name">Nom</label>
+                  <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                  <label for="email">Email</label>
+                  <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit" class="submit-btn">
+                  <i class="fas fa-paper-plane"></i>
+                  Envoyer
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</div>
+  </main>
 
-
-<!-- Formation -->
-<div id="education" class="section dark">
-  <div class="boxed text-center">
-    <h2>Formation</h2>
-    <div class="education-container">
-      <!-- BUT Informatique -->
-      <div class="education-item">
-        <h3>BUT Informatique</h3>
-        <p class="date-location">Septembre 2023 - Juin 2026, IUT Aix-Marseille, Aix-en-Provence</p>
-        <ul>
-          <li>Programmation d'un jeu d'échecs en Java</li>
-          <li>Programmation d'un Candy Crush-like en C++</li>
-          <li>Programmation d'une base de données sur Access</li>
-          <li>Création d'un site WEB avec MySQL/PHP</li>
-        </ul>
-      </div>
-      <!-- Baccalauréat STI2D -->
-      <div class="education-item">
-        <h3>Baccalauréat STI2D, Mention Bien</h3>
-        <p class="date-location">Juin 2023, Lycée polyvalent Adam de Craponne, Salon-de-Provence</p>
-        <ul>
-          <li>Programmation d'un store banne sur ARDUINO</li>
-          <li>Conception et programmation d'un capteur de CO2 et d'un robot-sumo</li>
-          <li>Programmation HTML et CSS</li>
-          <li>Certification PIX</li>
-        </ul>
+  <!-- TASKBAR -->
+  <div class="taskbar">
+    <div class="taskbar-left">
+      <div class="start-button">
+        <i class="fas fa-th"></i>
       </div>
     </div>
-  </div>
-</div>
-
-
-<!-- Projets -->
-<div id="projects" class="section">
-  <div class="boxed text-center">
-    <h2>Projets</h2>
-    <div class="flex space-between">
-      <!-- Chess Game -->
-      <div class="w32 wm100 realisation">
-        <img src="img/chess.jpg" alt="Chess Game">
-        <h3>Chess Game</h3>
-        <p>Développement d'un jeu d'échecs en Java pour approfondir mes compétences en algorithmes et programmation orientée objet.</p>
-      </div>
-      <!-- Candy Crush-like -->
-      <div class="w32 wm100 realisation">
-        <img src="img/candy_crush.png" alt="Candy Crush-like">
-        <h3>Candy Crush-like</h3>
-        <p>Création d'un jeu similaire à Candy Crush en C++ pour améliorer mes compétences en développement de jeux et en logique de programmation.</p>
-      </div>
-      <!-- Site WEB avec MySQL/PHP -->
-      <div class="w32 wm100 realisation">
-        <a href="https://tenracc.alwaysdata.net/">
-          <img href="https://tenracc.alwaysdata.net/" src="img/site_tenrac.JPG" alt="Site WEB">
-        </a>
-        <h3>Site WEB avec MySQL/PHP</h3>
-        <p>Développement d'un site web dynamique utilisant MySQL et PHP pour gérer une base de données et offrir des fonctionnalités interactives.</p>
-      </div>
+    <div class="taskbar-center">
+      <div class="taskbar-apps" id="taskbar-apps"></div>
+    </div>
+    <div class="taskbar-right">
+      <div class="time" id="current-time"></div>
     </div>
   </div>
-</div>
 
-<!-- Contact -->
-<div id="contact" class="section dark">
-  <div class="boxed text-center">
-    <h2>Contact</h2>
-    <div class="contact-info">
-      <p>📞 <strong>Téléphone :</strong> 06.33.54.80.08</p>
-      <p>📧 <strong>Email :</strong> loeb.dorian97@gmail.com</a></p>
-      <p>📍 <strong>Localisation :</strong> Eyguières (13430)</p>
-      <p>🚗 <strong>Permis :</strong> B</p>
-      <p>🎂 <strong>Âge :</strong> 20 ans</p>
-    </div>
-  </div>
-</div>
-
-<!-- Scripts -->
-<script src="js/app.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
