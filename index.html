@@ -3,493 +3,545 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Portfolio Dorian Loeb</title>
+  <title>Dorian Loeb — Orientation Big Data</title>
   <link rel="icon" href="img/favicon_valanor.png">
-  <meta name="description" content="Portfolio de Dorian Loeb - Développeur Web">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+  <meta name="description" content="Dorian Loeb — Étudiant BUT Informatique, orienté big data et data engineering, en recherche d'une alternance pour septembre 2026.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" type="text/css">
+  <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- NAVBAR -->
-  <nav class="navbar">
-    <div class="nav-brand">
-      <i class="fas fa-code"></i>
-      <span>Dorian Loeb</span>
-    </div>
-    <ul class="nav-menu">
-      <li><button class="nav-link" data-tab="about">À propos</button></li>
-      <li><button class="nav-link" data-tab="experience">Expérience</button></li>
-      <li><button class="nav-link" data-tab="skills">Compétences</button></li>
-      <li><button class="nav-link" data-tab="formation">Formation</button></li>
-      <li><button class="nav-link" data-tab="projects">Projets</button></li>
-      <li><button class="nav-link" data-tab="contact">Contact</button></li>
+
+  <!-- CURSOR CUSTOM -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+
+  <!-- PROGRESS BAR -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- NAVIGATION -->
+  <nav class="navbar" id="navbar">
+    <a href="#hero" class="nav-logo">DL<span class="logo-dot">.</span></a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#about" class="nav-link">À propos</a></li>
+      <li><a href="#skills" class="nav-link">Compétences</a></li>
+      <li><a href="#experience" class="nav-link">Expérience</a></li>
+      <li><a href="#education" class="nav-link">Formation</a></li>
+      <li><a href="#projects" class="nav-link">Projets</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
     </ul>
-    <div class="nav-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
+    <a href="mailto:loeb.dorian97@gmail.com" class="nav-cta">Me contacter <i class="fas fa-arrow-right"></i></a>
+    <button class="burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
-  <!-- BUREAU -->
-  <main class="desktop">
-    <div class="desktop-background"></div>
-    
-    <!-- ICÔNES DU BUREAU -->
-    <div class="desktop-icons">
-      <div class="desktop-icon" data-tab="about">
-        <i class="fas fa-user"></i>
-        <span>À propos</span>
-      </div>
-      <div class="desktop-icon" data-tab="experience">
-        <i class="fas fa-briefcase"></i>
-        <span>Expérience</span>
-      </div>
-      <div class="desktop-icon" data-tab="skills">
-        <i class="fas fa-tools"></i>
-        <span>Compétences</span>
-      </div>
-      <div class="desktop-icon" data-tab="formation">
-        <i class="fas fa-graduation-cap"></i>
-        <span>Formation</span>
-      </div>
-      <div class="desktop-icon" data-tab="projects">
-        <i class="fas fa-folder-open"></i>
-        <span>Projets</span>
-      </div>
-      <div class="desktop-icon" data-tab="contact">
-        <i class="fas fa-envelope"></i>
-        <span>Contact</span>
-      </div>
-    </div>
-
-    <!-- FENÊTRES / ONGLETS -->
-    <div class="window-container">
-      <!-- ONGLET À PROPOS -->
-      <div class="window" id="about-window" data-tab="about">
-        <div class="window-header">
-          <div class="window-controls">
-            <span class="control close" data-action="close"></span>
-            <span class="control minimize" data-action="minimize"></span>
-            <span class="control maximize" data-action="maximize"></span>
-          </div>
-          <div class="window-title">
-            <i class="fas fa-user"></i>
-            <span>À propos de moi</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="profile-section">
-            <div class="profile-avatar">
-              <i class="fas fa-user-circle"></i>
-            </div>
-            <h2>Dorian Loeb</h2>
-            <p class="subtitle">Étudiant en BUT Informatique</p>
-            <p class="description">
-              Passionné par le développement web, je suis étudiant en 3ème année de BUT Informatique à l'IUT d'Aix-en-Provence. 
-              J'ai acquis des compétences solides en programmation et en gestion de projet. 
-              Mon objectif est de trouver un stage de 15 semaines pour valider ma troisième année de BUT.
-            </p>
-            <div class="quick-stats">
-              
-              <div class="stat">
-                <i class="fas fa-map-marker-alt"></i>
-                <span>Eyguières (13430)</span>
-              </div>
-              <div class="stat">
-                <i class="fas fa-birthday-cake"></i>
-                <span id="age-display"></span>
-              </div>
-              <div class="stat">
-                <i class="fas fa-car"></i>
-                <span>Permis B</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ONGLET EXPÉRIENCE -->
-      <div class="window" id="experience-window" data-tab="experience">
-        <div class="window-header">
-          <div class="window-controls">
-            <span class="control close" data-action="close"></span>
-            <span class="control minimize" data-action="minimize"></span>
-            <span class="control maximize" data-action="maximize"></span>
-          </div>
-          <div class="window-title">
-            <i class="fas fa-briefcase"></i>
-            <span>Expériences professionnelles</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="timeline">
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <h3>Stage Développeur Web</h3>
-                <p class="timeline-date">Avril - Juin 2025</p>
-                <p class="timeline-company">REVONUM</p>
-                <p>Intégration d'API d'Intelligence Artificielle & test de bibliothèques front-end</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <h3>Agent de Services Intérieurs</h3>
-                <p class="timeline-date">Juillet - Août 2024</p>
-                <p class="timeline-company">Hôpital du Pays Salonais</p>
-                <p>Distribution de matériel dans les services de soins</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <h3>Préparateur de commande</h3>
-                <p class="timeline-date">Juillet - Août 2023</p>
-                <p class="timeline-company">Pro à Pro Distribution Sud</p>
-                <p>Préparation des colis avec transpalette électrique</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <h3>Conseiller clientèle</h3>
-                <p class="timeline-date">Juillet - Août 2022</p>
-                <p class="timeline-company">WELDOM</p>
-                <p>Conseil technique et mise en rayon</p>
-              </div>
-            </div>
-            <div class="timeline-item">
-              <div class="timeline-dot"></div>
-              <div class="timeline-content">
-                <h3>Stage d'observation</h3>
-                <p class="timeline-date">Décembre 2019</p>
-                <p class="timeline-company">Hôpital du Pays Salonais</p>
-                <p>Aide à l'installation du matériel informatique</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ONGLET COMPÉTENCES -->
-      <div class="window" id="skills-window" data-tab="skills">
-        <div class="window-header">
-          <div class="window-controls">
-            <span class="control close" data-action="close"></span>
-            <span class="control minimize" data-action="minimize"></span>
-            <span class="control maximize" data-action="maximize"></span>
-          </div>
-          <div class="window-title">
-            <i class="fas fa-tools"></i>
-            <span>Compétences techniques</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="skills-grid">
-            <div class="skill-category">
-              <h3><i class="fas fa-code"></i> Langages de programmation</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">PHP</span>
-                <span class="skill-tag">SQL</span>
-                <span class="skill-tag">HTML/CSS</span>
-                <span class="skill-tag">Java</span>
-                <span class="skill-tag">C++</span>
-                <span class="skill-tag">JavaScript</span>
-                <span class="skill-tag">Angular</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h3><i class="fas fa-laptop-code"></i> Logiciels & Outils</h3>
-              <div class="skill-tags">
-                <span class="skill-tag">Visual Studio</span>
-                <span class="skill-tag">IntelliJ IDEA</span>
-                <span class="skill-tag">Microsoft Office</span>
-                <span class="skill-tag">Oracle SQL</span>
-                <span class="skill-tag">Git</span>
-              </div>
-            </div>
-            <div class="skill-category">
-              <h3><i class="fas fa-globe"></i> Langues</h3>
-              <div class="language-skills">
-                <div class="language-item">
-                  <span>Français</span>
-                  <div class="language-level">
-                    <div class="level-bar" style="width: 100%"></div>
-                  </div>
-                  <span>Natif</span>
-                </div>
-                <div class="language-item">
-                  <span>Anglais</span>
-                  <div class="language-level">
-                    <div class="level-bar" style="width: 70%"></div>
-                  </div>
-                  <span>B1 - Courant</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ONGLET FORMATION -->
-      <div class="window" id="formation-window" data-tab="formation">
-        <div class="window-header">
-          <div class="window-controls">
-            <span class="control close" data-action="close"></span>
-            <span class="control minimize" data-action="minimize"></span>
-            <span class="control maximize" data-action="maximize"></span>
-          </div>
-          <div class="window-title">
-            <i class="fas fa-graduation-cap"></i>
-            <span>Formation académique</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="education-timeline">
-            <div class="education-item">
-              <div class="education-icon">
-                <i class="fas fa-university"></i>
-              </div>
-              <div class="education-content">
-                <h3>BUT Informatique</h3>
-                <p class="education-period">Septembre 2023 - Juin 2026</p>
-                <p class="education-institution">IUT Aix-Marseille</p>
-                <div class="projects-highlight">
-                  <h4>Projets réalisés :</h4>
-                  <ul>
-                    <li><i class="fas fa-chess"></i> Jeu d'échecs en Java</li>
-                    <li><i class="fas fa-gamepad"></i> Candy Crush-like en C++</li>
-                    <li><i class="fas fa-database"></i> Base de données Access</li>
-                    <li><i class="fas fa-globe"></i> Site web MySQL/PHP</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-            <div class="education-item">
-              <div class="education-icon">
-                <i class="fas fa-school"></i>
-              </div>
-              <div class="education-content">
-                <h3>Baccalauréat STI2D</h3>
-                <p class="education-period">Juin 2023</p>
-                <p class="education-institution">Lycée Adam de Craponne</p>
-                <div class="projects-highlight">
-                  <h4>Projets réalisés :</h4>
-                  <ul>
-                    <li><i class="fas fa-microchip"></i> Store banne sur Arduino</li>
-                    <li><i class="fas fa-robot"></i> Robot-sumo & capteur CO2</li>
-                    <li><i class="fas fa-code"></i> Programmation HTML/CSS</li>
-                    <li><i class="fas fa-certificate"></i> Certification PIX</li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ONGLET PROJETS -->
-      <div class="window" id="projects-window" data-tab="projects">
-        <div class="window-header">
-          <div class="window-controls">
-            <span class="control close" data-action="close"></span>
-            <span class="control minimize" data-action="minimize"></span>
-            <span class="control maximize" data-action="maximize"></span>
-          </div>
-          <div class="window-title">
-            <i class="fas fa-folder-open"></i>
-            <span>Mes projets</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="projects-grid">
-            <div class="project-card">
-              <div class="project-image">
-                <img src="img/projet_hopital.JPG" alt="Challenge développement durable">
-              </div>
-              <div class="project-info">
-                <h3>Challenge développement durable</h3>
-                <p>Création d'un site web pour le challenge du dev durable pour l'hôpital de Salon-de-Provence.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">PHP</span>
-                  <span class="tech-tag">MySQL</span>
-                  <span class="tech-tag">JavaScript</span>
-                </div>
-                <a href="https://loeb.alwaysdata.net/" class="project-link" target="_blank">
-                  <i class="fas fa-external-link-alt"></i> Voir le site
-                </a>
-              </div>
-            </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="img/chess.jpg" alt="Chess Game">
-              </div>
-              <div class="project-info">
-                <h3>Chess Game</h3>
-                <p>Développement d'un jeu d'échecs en Java pour approfondir mes compétences en algorithmique et POO.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">Java</span>
-                  <span class="tech-tag">POO</span>
-                  <span class="tech-tag">Algorithmes</span>
-                </div>
-              </div>
-            </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="img/site_tenrac.JPG" alt="Site WEB MySQL/PHP">
-              </div>
-              <div class="project-info">
-                <h3>Site WEB avec MySQL/PHP</h3>
-                <p>Développement d'un site web dynamique avec base de données et fonctionnalités interactives.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">PHP</span>
-                  <span class="tech-tag">MySQL</span>
-                  <span class="tech-tag">HTML/CSS</span>
-                </div>
-                <a href="https://tenracc.alwaysdata.net/" class="project-link" target="_blank">
-                  <i class="fas fa-external-link-alt"></i> Voir le site
-                </a>
-              </div>
-            </div>
-            <div class="project-card">
-              <div class="project-image">
-                <img src="img/candy_crush.png" alt="Candy Crush-like">
-              </div>
-              <div class="project-info">
-                <h3>Candy Crush-like</h3>
-                <p>Création d'un jeu similaire à Candy Crush en C++ pour améliorer mes compétences en logique et développement de jeux.</p>
-                <div class="project-tech">
-                  <span class="tech-tag">C++</span>
-                  <span class="tech-tag">Game Dev</span>
-                  <span class="tech-tag">Logique</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          
-        </div>
-      </div>
-
-      <!-- ONGLET CONTACT -->
-      <div class="window" id="contact-window" data-tab="contact">
-        <div class="window-header">
-          <div class="window-controls">
-            <span class="control close" data-action="close"></span>
-            <span class="control minimize" data-action="minimize"></span>
-            <span class="control maximize" data-action="maximize"></span>
-          </div>
-          <div class="window-title">
-            <i class="fas fa-envelope"></i>
-            <span>Me contacter</span>
-          </div>
-        </div>
-        <div class="window-content">
-          <div class="contact-grid">
-            <div class="contact-info">
-              <h3>Informations de contact</h3>
-              <div class="contact-item">
-                <i class="fas fa-phone"></i>
-                <div>
-                  <strong>Téléphone</strong>
-                  <p>06.33.54.80.08</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-envelope"></i>
-                <div>
-                  <strong>Email</strong>
-                  <p>loeb.dorian97@gmail.com</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-map-marker-alt"></i>
-                <div>
-                  <strong>Localisation</strong>
-                  <p>Eyguières (13430)</p>
-                </div>
-              </div>
-              <div class="contact-item">
-                <i class="fas fa-car"></i>
-                <div>
-                  <strong>Permis</strong>
-                  <p>Permis B</p>
-                </div>
-              </div>
-            </div>
-            <div class="contact-form">
-              <h3>Envoyez-moi un message</h3>
-              <form>
-                <div class="form-group">
-                  <label for="name">Nom</label>
-                  <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                  <label for="message">Message</label>
-                  <textarea id="message" name="message" rows="5" required></textarea>
-                </div>
-                <button type="submit" class="submit-btn">
-                  <i class="fas fa-paper-plane"></i>
-                  Envoyer
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main>
-
-  <!-- TASKBAR -->
-  <div class="taskbar">
-    <div class="taskbar-left">
-      <div class="start-button">
-        <i class="fas fa-th"></i>
-      </div>
-    </div>
-    <div class="taskbar-center">
-      <div class="taskbar-apps" id="taskbar-apps"></div>
-    </div>
-    <div class="taskbar-right">
-      <div class="time" id="current-time"></div>
-    </div>
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <ul>
+      <li><a href="#about" class="mobile-link">À propos</a></li>
+      <li><a href="#skills" class="mobile-link">Compétences</a></li>
+      <li><a href="#experience" class="mobile-link">Expérience</a></li>
+      <li><a href="#education" class="mobile-link">Formation</a></li>
+      <li><a href="#projects" class="mobile-link">Projets</a></li>
+      <li><a href="#contact" class="mobile-link">Contact</a></li>
+    </ul>
   </div>
 
-  <!-- NAVIGATION MOBILE (ONGLETS) -->
-  <div class="mobile-tabs">
-    <div class="mobile-tab" data-tab="about">
-      <i class="fas fa-user"></i>
-      <span>À propos</span>
+  <!-- ===== HERO ===== -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <div class="orb orb-1"></div>
+      <div class="orb orb-2"></div>
+      <div class="orb orb-3"></div>
+      <div class="grid-overlay"></div>
     </div>
-    <div class="mobile-tab" data-tab="experience">
-      <i class="fas fa-briefcase"></i>
-      <span>Expérience</span>
-    </div>
-    <div class="mobile-tab" data-tab="skills">
-      <i class="fas fa-tools"></i>
-      <span>Skills</span>
-    </div>
-    <div class="mobile-tab" data-tab="formation">
-      <i class="fas fa-graduation-cap"></i>
-      <span>Formation</span>
-    </div>
-    <div class="mobile-tab" data-tab="projects">
-      <i class="fas fa-folder-open"></i>
-      <span>Projets</span>
-    </div>
-    <div class="mobile-tab" data-tab="contact">
-      <i class="fas fa-envelope"></i>
-      <span>Contact</span>
-    </div>
-  </div>
 
-  <script src="js/app.js"></script>
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Disponible pour alternance · à partir de Sept 2026
+      </div>
+
+      <h1 class="hero-title">
+        <span class="title-line">Dorian</span>
+        <span class="title-line title-accent">Loeb</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        <span class="typed-text" id="typed-text"></span><span class="cursor-blink">|</span>
+      </p>
+
+      <p class="hero-desc">
+        Étudiant en 3ème année de <strong>BUT Informatique</strong> à l'IUT d'Aix-en-Provence.
+        Passionné par la data, le big data et les nouvelles technologies.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="btn btn-primary">Voir mes projets <i class="fas fa-arrow-down"></i></a>
+        <a href="#contact" class="btn btn-ghost">Prendre contact</a>
+      </div>
+
+      <div class="hero-scroll">
+        <div class="scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
+    </div>
+
+    <div class="hero-terminal">
+      <div class="terminal-header">
+        <span class="t-dot t-red"></span>
+        <span class="t-dot t-yellow"></span>
+        <span class="t-dot t-green"></span>
+        <span class="t-title">portfolio.js</span>
+      </div>
+      <div class="terminal-body">
+        <pre id="terminal-code"><code></code></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-label">01 — À propos</div>
+      <h2 class="section-title reveal">Qui suis-je<span class="accent">?</span></h2>
+
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p>
+            Je m'appelle <strong>Dorian Loeb</strong>, j'ai 21 ans et je vis à Eyguières, dans les Bouches-du-Rhône.
+            Actuellement en troisième et dernière année de <strong>BUT Informatique</strong>,
+            je suis à la recherche d'une alternance orientée data / big data
+            pour valider mon diplôme et enrichir mon expérience professionnelle.
+          </p>
+          <p>
+            Mon stage chez <strong>Revonum</strong> m'a permis d'intégrer des API d'Intelligence Artificielle
+            et de manipuler des données issues de services externes. J'aime relever des défis techniques
+            et concevoir des solutions robustes autour de la donnée.
+          </p>
+          <div class="about-tags">
+            <span class="tag"><i class="fas fa-code"></i> Big Data</span>
+            <span class="tag"><i class="fas fa-database"></i> Bases de données</span>
+            <span class="tag"><i class="fas fa-gamepad"></i> Game Dev</span>
+            <span class="tag"><i class="fas fa-robot"></i> IA / API</span>
+          </div>
+        </div>
+
+        <div class="about-stats reveal">
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Localisation</span>
+              <span class="stat-value">Eyguières, PACA</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Formation</span>
+              <span class="stat-value">BUT Informatique</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Dispo. alternance</span>
+              <span class="stat-value">Septembre 2026</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-car"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Mobilité</span>
+              <span class="stat-value">Permis B</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-language"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Langues</span>
+              <span class="stat-value">FR · EN (B1)</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon"><i class="fas fa-heart"></i></div>
+            <div class="stat-info">
+              <span class="stat-label">Centres d'intérêt</span>
+              <span class="stat-value">Escalade · 3D · Jeux</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SKILLS ===== -->
+  <section class="section skills-section" id="skills">
+    <div class="container">
+      <div class="section-label">02 — Compétences</div>
+      <h2 class="section-title reveal">Stack technique<span class="accent">.</span></h2>
+
+      <div class="skills-grid">
+        <div class="skill-block reveal">
+          <div class="skill-block-header">
+            <i class="fas fa-code skill-icon"></i>
+            <h3>Langages</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="pill pill-hot">PHP</span>
+            <span class="pill pill-hot">JavaScript</span>
+            <span class="pill pill-hot">SQL</span>
+            <span class="pill pill-mid">Python</span>
+            <span class="pill pill-mid">Java</span>
+            <span class="pill pill-mid">C++</span>
+            <span class="pill pill-cool">Angular</span>
+            <span class="pill pill-cool">C#</span>
+            <span class="pill pill-cool">HTML / CSS</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal">
+          <div class="skill-block-header">
+            <i class="fas fa-tools skill-icon"></i>
+            <h3>Outils & Environnements</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="pill pill-hot">Git</span>
+            <span class="pill pill-hot">GitHub</span>
+            <span class="pill pill-hot">MySQL</span>
+            <span class="pill pill-mid">IntelliJ IDEA</span>
+            <span class="pill pill-mid">Visual Studio</span>
+            <span class="pill pill-mid">QT Creator</span>
+            <span class="pill pill-cool">Unity</span>
+            <span class="pill pill-cool">Webpack</span>
+          </div>
+        </div>
+
+        <div class="skill-block reveal">
+          <div class="skill-block-header">
+            <i class="fas fa-layer-group skill-icon"></i>
+            <h3>Savoir-faire</h3>
+          </div>
+          <div class="skill-pills">
+            <span class="pill pill-hot">Big Data</span>
+            <span class="pill pill-hot">Ingénierie des données</span>
+            <span class="pill pill-mid">Intégration API</span>
+            <span class="pill pill-mid">POO</span>
+            <span class="pill pill-mid">NoSQL</span>
+            <span class="pill pill-cool">Développement Jeu</span>
+            <span class="pill pill-cool">Modélisation 3D</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EXPERIENCE ===== -->
+  <section class="section exp-section" id="experience">
+    <div class="container">
+      <div class="section-label">03 — Parcours</div>
+      <h2 class="section-title reveal">Expériences<span class="accent">.</span></h2>
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+          <div class="tl-left">
+            <span class="tl-date">Avr — Juin 2025</span>
+          </div>
+          <div class="tl-connector">
+            <div class="tl-dot active"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">Stage · Développement applicatif</h3>
+                <p class="tl-company"><i class="fas fa-building"></i> Revonum — Eyguières</p>
+              </div>
+              <span class="tl-badge">Stage</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Intégration d'API d'Intelligence Artificielle pour améliorer l'ergonomie d'un site web</li>
+              <li>Test et évaluation de bibliothèques front-end (Syncfusion & DevExtreme)</li>
+            </ul>
+            <div class="tl-tech">
+              <span>JavaScript</span><span>API IA</span><span>Données</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-left">
+            <span class="tl-date">Juil — Août 2024</span>
+          </div>
+          <div class="tl-connector">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">CDD · Agent de services intérieurs</h3>
+                <p class="tl-company"><i class="fas fa-hospital"></i> Hôpital du Pays salonais — Salon-de-Provence</p>
+              </div>
+              <span class="tl-badge tl-badge-alt">CDD</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Distribution du linge dans les services de soins</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-left">
+            <span class="tl-date">Juil — Août 2023</span>
+          </div>
+          <div class="tl-connector">
+            <div class="tl-dot"></div>
+            <div class="tl-line"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">CDD · Agent logistique</h3>
+                <p class="tl-company"><i class="fas fa-warehouse"></i> Pro à Pro Distribution Sud — Miramas</p>
+              </div>
+              <span class="tl-badge tl-badge-alt">CDD</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Préparation des colis avec transpalette électrique</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="tl-left">
+            <span class="tl-date">Juil — Août 2022</span>
+          </div>
+          <div class="tl-connector">
+            <div class="tl-dot"></div>
+          </div>
+          <div class="tl-card">
+            <div class="tl-header">
+              <div>
+                <h3 class="tl-role">CDD · Conseiller clientèle</h3>
+                <p class="tl-company"><i class="fas fa-store"></i> WELDOM — Salon-de-Provence</p>
+              </div>
+              <span class="tl-badge tl-badge-alt">CDD</span>
+            </div>
+            <ul class="tl-bullets">
+              <li>Mise en rayon et conseil client</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== EDUCATION ===== -->
+  <section class="section edu-section" id="education">
+    <div class="container">
+      <div class="section-label">04 — Formation</div>
+      <h2 class="section-title reveal">Parcours académique<span class="accent">.</span></h2>
+
+      <div class="edu-grid">
+        <div class="edu-card reveal">
+          <div class="edu-year">2023 — 2026</div>
+          <div class="edu-icon-wrap"><i class="fas fa-university"></i></div>
+          <h3>BUT Informatique</h3>
+          <p class="edu-institution">IUT d'Aix-en-Provence · Aix-Marseille Université</p>
+          <div class="edu-projects">
+            <p class="edu-projects-label">Projets réalisés :</p>
+            <ul>
+              <li><i class="fas fa-chevron-right"></i> CRM avec Angular & NoSQL pour entreprise partenaire</li>
+              <li><i class="fas fa-chevron-right"></i> Site web de l'IUT en MySQL / PHP</li>
+              <li><i class="fas fa-chevron-right"></i> Mini-jeux en C++ et Java</li>
+              <li><i class="fas fa-chevron-right"></i> Jeu vidéo sur Unity en C#</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="edu-card reveal">
+          <div class="edu-year">Juin 2023</div>
+          <div class="edu-icon-wrap"><i class="fas fa-school"></i></div>
+          <h3>Baccalauréat STI2D</h3>
+          <p class="edu-institution">Lycée Adam de Craponne · Salon-de-Provence</p>
+          <span class="edu-mention">Mention Bien</span>
+          <div class="edu-projects">
+            <p class="edu-projects-label">Projets réalisés :</p>
+            <ul>
+              <li><i class="fas fa-chevron-right"></i> Store banne automatisée sur Arduino</li>
+              <li><i class="fas fa-chevron-right"></i> Robot-sumo & capteur CO2</li>
+              <li><i class="fas fa-chevron-right"></i> Programmation HTML / CSS</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROJECTS ===== -->
+  <section class="section projects-section" id="projects">
+    <div class="container">
+      <div class="section-label">05 — Réalisations</div>
+      <h2 class="section-title reveal">Mes projets<span class="accent">.</span></h2>
+
+      <div class="projects-grid">
+
+        <div class="project-card reveal">
+          <div class="project-img">
+            <img src="img/projet_hopital.JPG" alt="Challenge développement durable" loading="lazy">
+            <div class="project-overlay">
+              <a href="https://loeb.alwaysdata.net/" target="_blank" rel="noopener" class="project-link-btn">
+                <i class="fas fa-external-link-alt"></i> Voir le site
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-num">01</span>
+            <h3>Challenge Développement Durable</h3>
+            <p>Site web interactif pour promouvoir l'activité physique au sein de l'hôpital de Salon-de-Provence.</p>
+            <div class="project-tech">
+              <span>PHP</span><span>MySQL</span><span>JavaScript</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img">
+            <img src="img/chess.jpg" alt="Chess Game" loading="lazy">
+            <div class="project-overlay">
+              <span class="project-link-btn no-link"><i class="fas fa-lock"></i> Projet académique</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-num">02</span>
+            <h3>Chess Game</h3>
+            <p>Jeu d'échecs complet développé en Java, avec moteur de jeu, gestion des pièces et interface graphique.</p>
+            <div class="project-tech">
+              <span>Java</span><span>POO</span><span>Algorithmes</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img">
+            <img src="img/site_tenrac.JPG" alt="Site web MySQL/PHP" loading="lazy">
+            <div class="project-overlay">
+              <a href="https://tenracc.alwaysdata.net/" target="_blank" rel="noopener" class="project-link-btn">
+                <i class="fas fa-external-link-alt"></i> Voir le site
+              </a>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-num">03</span>
+            <h3>Site Web Dynamique</h3>
+            <p>Application web avec base de données relationnelle, authentification et gestion de contenu.</p>
+            <div class="project-tech">
+              <span>PHP</span><span>MySQL</span><span>HTML/CSS</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-card reveal">
+          <div class="project-img">
+            <img src="img/candy_crush.png" alt="Candy Crush-like" loading="lazy">
+            <div class="project-overlay">
+              <span class="project-link-btn no-link"><i class="fas fa-lock"></i> Projet académique</span>
+            </div>
+          </div>
+          <div class="project-body">
+            <span class="project-num">04</span>
+            <h3>Candy Crush-like</h3>
+            <p>Jeu de type match-3 développé en C++, avec gestion des collisions, animations et score.</p>
+            <div class="project-tech">
+              <span>C++</span><span>Game Dev</span><span>Logique</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-label">06 — Contact</div>
+      <h2 class="section-title reveal">Travaillons ensemble<span class="accent">.</span></h2>
+
+      <div class="contact-grid">
+        <div class="contact-info reveal">
+          <p class="contact-intro">
+            Disponible pour une alternance à partir de <strong>septembre 2026</strong>.
+            N'hésitez pas à me contacter pour discuter d'une opportunité.
+          </p>
+
+          <div class="contact-links">
+            <a href="tel:0633548008" class="contact-link">
+              <div class="contact-link-icon"><i class="fas fa-phone"></i></div>
+              <div>
+                <span class="contact-link-label">Téléphone</span>
+                <span class="contact-link-value">06.33.54.80.08</span>
+              </div>
+            </a>
+            <a href="mailto:loeb.dorian97@gmail.com" class="contact-link">
+              <div class="contact-link-icon"><i class="fas fa-envelope"></i></div>
+              <div>
+                <span class="contact-link-label">Email</span>
+                <span class="contact-link-value">loeb.dorian97@gmail.com</span>
+              </div>
+            </a>
+            <a href="https://github.com/LOEB-Dorian-2326069aa" target="_blank" rel="noopener" class="contact-link">
+              <div class="contact-link-icon"><i class="fab fa-github"></i></div>
+              <div>
+                <span class="contact-link-label">GitHub</span>
+                <span class="contact-link-value">LOEB-Dorian</span>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <form class="contact-form reveal" id="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="name">Nom</label>
+              <input type="text" id="name" name="name" placeholder="Jean Dupont" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" placeholder="jean@example.com" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="subject">Sujet</label>
+            <input type="text" id="subject" name="subject" placeholder="Proposition d'alternance" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Votre message..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full" id="submit-btn">
+            Envoyer le message <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <span class="footer-logo">DL<span class="accent">.</span></span>
+      <p class="footer-text">Dorian Loeb · Orientation Big Data · <span id="footer-year"></span></p>
+      <p class="footer-credit">Fait avec <i class="fas fa-heart"></i> à Eyguières</p>
+    </div>
+  </footer>
+
+  <script src="js/vendor/app.js"></script>
 </body>
 </html>
