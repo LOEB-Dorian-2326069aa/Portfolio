@@ -135,7 +135,7 @@ const codeLines = [
   '',
   '<span class="t-green-text">const</span> developer = {',
   '  <span class="t-cyan">name</span>: <span class="t-string">"Dorian Loeb"</span>,',
-  '  <span class="t-cyan">age</span>: <span class="t-neon">21</span>,',
+  '  <span class="t-cyan">age</span>: <span class="t-neon">22</span>,',
   '  <span class="t-cyan">location</span>: <span class="t-string">"Eyguières, PACA"</span>,',
   '  <span class="t-cyan">skills</span>: [',
   '    <span class="t-string">"PHP"</span>, <span class="t-string">"JavaScript"</span>,',
